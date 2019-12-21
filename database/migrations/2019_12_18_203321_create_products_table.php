@@ -21,6 +21,9 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->text('imgpath');
             $table->timestamps();
+            $table->foreign('type_id')
+                ->references('id')->on('types')
+                ->onDelete('cascade');
         });
     }
 

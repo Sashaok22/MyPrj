@@ -11,8 +11,10 @@ class Basket extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Product()
+    public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany('App\Product',
+            'basket_product','basket_id',
+            'product_id')->withPivot('number');
     }
 }

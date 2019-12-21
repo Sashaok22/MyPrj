@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BasketProduct extends Model
 {
-    protected $table = 'basket_products';
+    protected $table = 'basket_product';
 }

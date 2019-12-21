@@ -23,8 +23,10 @@ class Product extends Model
         return $this->belongsToMany(ingredient::class);
     }
 
-    public function Basket()
+    public function baskets()
     {
-        return $this->BelongToMany(Basket::class);
+        return $this->belongsToMany('App\Product',
+            'basket_product','product_id',
+            'basket_id')->withPivot('number');
     }
 }

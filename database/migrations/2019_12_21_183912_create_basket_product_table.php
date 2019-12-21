@@ -19,6 +19,12 @@ class CreateBasketProductsTable extends Migration
             $table->integer('basket_id');
             $table->integer('number');
             $table->timestamps();
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade');
+            $table->foreign('basket_id')
+                ->references('id')->on('baskets')
+                ->onDelete('cascade');
         });
     }
 

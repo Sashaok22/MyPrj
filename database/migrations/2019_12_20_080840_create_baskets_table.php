@@ -17,6 +17,9 @@ class CreateBasketsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 

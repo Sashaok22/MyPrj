@@ -14,12 +14,12 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($bask as $bas)
+        @foreach($bask->products()->get() as $prod)
         <tr>
             <th scope="row">1</th>
-            <td>{{\App\Product::find($bas->product_id)->title}}</td>
-            <td></td>
-            <td></td>
+            <td>{{$prod->title}}</td>
+            <td>{{$prod->pivot->number}}</td>
+            <td>{{$prod->price}}</td>
         </tr>
         @endforeach
         </tbody>
