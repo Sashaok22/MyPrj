@@ -25,15 +25,20 @@ class ProductController extends Controller
         return view('prod', compact('product'));
     }
 
-    public function get()
+    public function cat()
     {
-        $products = Product::all()->sortByDesc('created_at');
+        $produc = Product::all()->sortByDesc('created_at');
+        return view('Categ', compact('produc'));
+    }
+
+    public function get($categ)
+    {
+        $products = Product::where('type', $categ)->first();
         return view('product', compact('products'));
     }
 
         public function insert(Request $request)
         {
-//            dd($request);
             $product = new Product();
             $product->title = $request->title;
             $product->weight = $request->weight;
@@ -59,5 +64,6 @@ class ProductController extends Controller
                     }
                 }
             }
+            return redirect()->route('product', [$product->id]);
         }
 }

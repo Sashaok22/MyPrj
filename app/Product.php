@@ -17,4 +17,9 @@ class Product extends Model
     {
         return $this->belongsToMany(ingredient::class);
     }
+
+    public function Basket()
+    {
+        return $this->HasMany(Basket::class);
+    }
 }

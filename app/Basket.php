@@ -10,4 +10,9 @@ class Basket extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

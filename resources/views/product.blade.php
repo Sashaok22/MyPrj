@@ -1,9 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div>
         @foreach($products as $product)
-            <div>
-            <a href="{{ route('product',[$product]) }}" class="card-link">
+            <div class="spis">
             <div class="card" style="width: 18rem; margin: 1rem">
                 {{--        <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">--}}
                 <div class="card-body">
@@ -27,6 +25,6 @@
                         ingredient:@foreach($product->ingredients()->get() as $ingredient){{$ingredient->title}} @endforeach</li>
                 </ul>
             </div>
+            </div>
         @endforeach
-    </div>
 @endsection

@@ -10,7 +10,7 @@
             </ul>
         </div>
     @endif
-    <h1>New product</h1>
+    <h1 style="position: center">New product</h1>
     <div class="content">
         <div class="container">
             <form method="POST" action="{{route('insertProduct')}}" enctype="multipart/form-data">
