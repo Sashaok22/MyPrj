@@ -1,10 +1,11 @@
 
 @extends('layouts.app')
 @section('content')
-    <div class="container">
+    <div class="container" style="border: solid black">
         <div class="border-bottom border-dark">
             <div class="row justify-content-md-center">
                 <div class="col-lg-10">
+                    <img style="width: 25%" class="card-img-top" src="{{asset('/storage/'.$product->imgpath)}}" alt="Card image cap">
                     <h1>Title: {{$product->title}}</h1>
                 </div>
                 <div class="col-auto">
@@ -13,13 +14,6 @@
             </div>
             <div class="row">
                 <div class="col-1">
-                    <form action="{{route('buy')}}" method="post">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <button type="submit" class="btn btn-primary">Add to Basket</button>
-                        Count
-                        <p><input class="form-control" type="text" name="number" value="1"></p>
-                    </form>
 {{--                    <form id="save" method="post">--}}
 {{--                        @csrf--}}
 {{--                        <div id="norm">--}}
@@ -40,7 +34,15 @@
                     {{$ing->title}}
                 @endforeach
             </div>
+
         </div>
+        <form action="{{route('buy')}}" method="post">
+            @csrf
+            <input type="hidden" name="product_id" value="{{$product->id}}">
+            <button type="submit" class="btn btn-primary">Add to Basket</button>
+            Count
+            <p><input style="width: 5%" class="form-control" type="text" name="number" value="1"></p>
+        </form>
     </div>
 {{--<script>--}}
 {{--    $(document).ready(function () {--}}

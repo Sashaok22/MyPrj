@@ -15,20 +15,24 @@
         <div class="container">
             <form method="POST" action="{{route('insertProduct')}}" enctype="multipart/form-data">
                 <div class="form-group">
+                    Choose image for product:
+                    <input class="form-control" type="file" name="image">
+                </div>
+                <div class="form-group">
                     @csrf
-                    Введите название:
+                    Enter the title:
                     <textarea class="form-control" id="text" name="title"></textarea>
                 </div>
                 <div class="form-group">
-                    Введите вес:
+                    Enter weight:
                     <textarea class="form-control" id="text" name="weight"></textarea>
                 </div>
                 <div class="form-group">
-                    Введите цену:
+                    Enter price:
                     <input class="form-control" type="text" name="price">
                 </div>
                 <div class="form-group">
-                    Выберите тип:
+                    Enter type:
                     <select name="type" class="form-control">
                         @foreach($ings as $ing)
                             <option value={{$ing->id}}>{{$ing->title}}</option>
@@ -36,7 +40,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    Выберите ингредиенты:
+                    Enter ingredients:
                     <input class="form-control" type="text" name="ingredients">
                 </div>
                 <button type="submit" class="btn btn-primary">Добавить</button>

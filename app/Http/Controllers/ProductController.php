@@ -40,7 +40,9 @@ class ProductController extends Controller
 
         public function insert(Request $request)
         {
+            $path = $request->file('image')->store('uploads','public');
             $product = new Product();
+            $product->imgpath = $path;
             $product->title = $request->title;
             $product->weight = $request->weight;
             $product->price = $request->price;
