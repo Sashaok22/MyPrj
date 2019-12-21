@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Basket;
+use App\BasketProduct;
 use App\Product;
 use App\type;
 use App\User;
@@ -14,12 +15,12 @@ class UserproductController extends Controller
 {
     public function buy(Request $request)
     {
-        $basket = new Basket();
-        $basket->number = $request->number;
-        $basket->user_id = Auth::id();
-        $basket->product_id = $request->product_id;
-        $basket->save();
-        return redirect()->back();
+        $baskprod = new BasketProduct();
+        $baskprod->basket_id = Basket::find(Auth::id())->id;
+        $baskprod->product_id = $request->product_id;
+        $baskprod->number = $request->number;
+        $baskprod->save();
+        \response($request);
     }
 
 

@@ -25,6 +25,6 @@ class Product extends Model
 
     public function Basket()
     {
-        return $this->HasMany(Basket::class);
+        return $this->BelongToMany(Basket::class);
     }
 }

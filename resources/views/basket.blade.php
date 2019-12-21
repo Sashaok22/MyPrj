@@ -17,9 +17,9 @@
         @foreach($bask as $bas)
         <tr>
             <th scope="row">1</th>
-            <td>{{\App\Product::find($bas->product_id)}}</td>
-            <td>{{}}</td>
-            <td>{{}}</td>
+            <td>{{\App\Product::find($bas->product_id)->title}}</td>
+            <td></td>
+            <td></td>
         </tr>
         @endforeach
         </tbody>

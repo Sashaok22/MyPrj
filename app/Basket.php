@@ -13,6 +13,6 @@ class Basket extends Model
 
     public function Product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 }
