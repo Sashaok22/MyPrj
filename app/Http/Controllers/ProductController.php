@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Basket;
 use App\ingredient;
 use App\ingredientProduct;
 use App\Product;
@@ -18,6 +19,12 @@ class ProductController extends Controller
             $ings = type::all();
             return view('insertproduct',compact('ings'));
         }
+
+    public function  showbasket()
+    {
+        $bask = Basket::all();
+        return view('basket', compact('bask'));
+    }
 
 
     public function show($type,$id)

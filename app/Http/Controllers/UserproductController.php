@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Basket;
+use App\Product;
+use App\type;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,5 +21,7 @@ class UserproductController extends Controller
         $basket->save();
         return redirect()->back();
     }
+
+
 
 }

@@ -17,7 +17,6 @@ class CreateBasketsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('number');
-            $table->integer('product_id');
             $table->timestamps();
         });
     }

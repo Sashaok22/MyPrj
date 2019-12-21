@@ -8,6 +8,7 @@ Route::get('/categ/{type}/{id}', 'ProductController@show')->name('product');
 Route::get('/categ', 'ProductController@cat')->name('categories');
 Route::get('/categ/{type}', 'ProductController@get')->name('products');
 Route::post('/addtobasket','UserproductController@buy')->name('buy');
+Route::get('/basket','ProductController@showbasket')->name('showbasket');
 
 Auth::routes();
 

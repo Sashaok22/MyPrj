@@ -364,10 +364,10 @@
                                 <a href="{{route('categories')}}">Menu</a>
                             </li>
                             <li>
-                                <a href="/about/">Корзина</a>
+                                <a href="{{route('showbasket')}}">Basket</a>
                             </li>
                             <li>
-                                <a href="/contacts/">Личный кабинет</a>
+                                <a href="/contacts/">User account</a>
                             </li>
                             <li>
                                 <a href="{{route('InsProd')}}">Insert product</a>
