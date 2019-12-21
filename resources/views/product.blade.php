@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div style="display: flex; flex-wrap: nowrap">
                         <div style="display:flex; flex-direction: row">
-                            <a href="{{ route('product',[$product]) }}" class="card-link">
+                            <a href="{{ route('product',[$product->type_id,$product]) }}" class="card-link">
                                 <h5 class="card-title">{{$product->title}}</h5>
                             </a>
                         </div>
@@ -17,7 +17,7 @@
                     </div>
                     <p class="card-text">{{$product->weight}}</p>
                     <div style="display:flex; flex-direction: row-reverse">
-                        <p class="card-title" style="margin:0 2rem">{{$product->type}}</p>
+                        <p class="card-title" style="margin:0 2rem">{{App\Type::find($product->type_id)->title}}</p>
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">

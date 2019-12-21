@@ -13,6 +13,11 @@ class Product extends Model
         'price'
     ];
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
     public function ingredients()
     {
         return $this->belongsToMany(ingredient::class);

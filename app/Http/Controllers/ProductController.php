@@ -9,6 +9,7 @@ use App\ProductTag;
 use App\Tag;
 use App\type;
 use Illuminate\Http\Request;
+use SebastianBergmann\Comparator\TypeComparator;
 
 class ProductController extends Controller
 {
@@ -19,7 +20,7 @@ class ProductController extends Controller
         }
 
 
-    public function show($id)
+    public function show($type,$id)
     {
         $product = Product::where('id', $id)->first();
         return view('prod', compact('product'));
@@ -27,13 +28,13 @@ class ProductController extends Controller
 
     public function cat()
     {
-        $produc = Product::all()->sortByDesc('created_at');
+        $produc = Type::all()->sortByDesc('created_at');
         return view('Categ', compact('produc'));
     }
 
     public function get($categ)
     {
-        $products = Product::where('type', $categ->type)->first();
+        $products = Type::find($categ)->products;
         return view('product', compact('products'));
     }
 
@@ -43,7 +44,7 @@ class ProductController extends Controller
             $product->title = $request->title;
             $product->weight = $request->weight;
             $product->price = $request->price;
-            $product->type = $request->type;
+            $product->type_id=$request->type;
             $product->save();
             if ($request->ingredients) {
                 $ings = explode(' ', $request->ingredients);
@@ -64,6 +65,6 @@ class ProductController extends Controller
                     }
                 }
             }
-            return redirect()->route('product', [$product->id]);
+//            return redirect()->route('product', [$product->]);
         }
 }

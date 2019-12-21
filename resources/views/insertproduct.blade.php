@@ -31,7 +31,7 @@
                     Выберите тип:
                     <select name="type" class="form-control">
                         @foreach($ings as $ing)
-                            <option value={{$ing->title}}>{{$ing->title}}</option>
+                            <option value={{$ing->id}}>{{$ing->title}}</option>
                         @endforeach;
                     </select>
                 </div>
