@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function get($categ)
     {
-        $products = Product::where('type', $categ)->first();
+        $products = Product::where('type', $categ->type)->first();
         return view('product', compact('products'));
     }
 
