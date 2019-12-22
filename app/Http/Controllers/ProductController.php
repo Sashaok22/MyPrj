@@ -14,6 +14,7 @@ use SebastianBergmann\Comparator\TypeComparator;
 
 class ProductController extends Controller
 {
+
         public function insertshow()
         {
             $ings = type::all();

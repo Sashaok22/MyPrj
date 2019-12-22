@@ -15,6 +15,6 @@ class Basket extends Model
     {
         return $this->belongsToMany('App\Product',
             'basket_product','basket_id',
-            'product_id')->withPivot('number');
+            'product_id')->withPivot('number','id');
     }
 }

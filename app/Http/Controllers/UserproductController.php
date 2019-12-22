@@ -23,6 +23,12 @@ class UserproductController extends Controller
         \response($request);
     }
 
+    public function delfrombask(Request $request)
+    {
+//        BasketProduct::find($request->delka)->delete();
+         return $request->delka;
+    }
+
 
 
 }

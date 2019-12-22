@@ -14,9 +14,9 @@ class CreateIngredientProductTable extends Migration
     public function up()
     {
         Schema::create('ingredient_product', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('ingredient_id');
-            $table->integer('product_id');
+            $table->Increments('id');
+            $table->integer('ingredient_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
             $table->foreign('product_id')
                 ->references('id')->on('products')

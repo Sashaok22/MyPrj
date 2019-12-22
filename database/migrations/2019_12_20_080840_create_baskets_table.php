@@ -14,12 +14,10 @@ class CreateBasketsTable extends Migration
     public function up()
     {
         Schema::create('baskets', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->Increments('id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
+
         });
     }
 
