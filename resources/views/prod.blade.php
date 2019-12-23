@@ -35,10 +35,16 @@
                         <strong>Product added</strong>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
 <script>
+    If()
+    {
+        $('#norm').hide();
+        $('#msg').show();
+    }
     $(document).ready(function () {
         $('#save').on('submit', function (e) {
             e.preventDefault();
@@ -53,6 +59,10 @@
             });
         });
     });
+
+
+
+
 </script>
 @endsection
 

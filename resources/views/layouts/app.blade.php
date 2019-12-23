@@ -35,7 +35,7 @@
 
         }
          .desktopmenu ul li:hover {
-            background: #fc1a1a;
+            background: #4aa0e6;
         }
         .desktopmenu ul {
             display: -webkit-box;
@@ -63,6 +63,11 @@
             color: inherit;
             padding: 10px 15px;
             text-decoration: none;
+        }
+
+        html, body
+        {
+            background-color: #6cb2eb;
         }
 
 

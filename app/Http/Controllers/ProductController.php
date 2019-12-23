@@ -48,8 +48,9 @@ class ProductController extends Controller
 
     public function show($type,$id)
     {
+        $prod= true;
         $product = Product::where('id', $id)->first();
-        return view('prod', compact('product'));
+        return view('prod', compact('product','prod'));
     }
 
     public function cat()
@@ -93,6 +94,6 @@ class ProductController extends Controller
                     }
                 }
             }
-//            return redirect()->route('product', [$product->]);
+            return redirect()->route('product');
         }
 }
