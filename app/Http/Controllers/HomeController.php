@@ -27,4 +27,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function buysend()
+    {
+        return view('message');
+    }
 }

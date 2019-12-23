@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BasketProduct;
 use App\ingredient;
 use App\ingredientProduct;
 use App\Product;
@@ -23,8 +24,25 @@ class ProductController extends Controller
 
         public function  showbasket()
     {
+        $sum = 0;
+        $flag = 0;
+        $test =0;
         $bask = \App\Basket::where('user_id',Auth::id())->get()->first();
-        return view('basket', compact('bask'));
+        foreach ($bask->products()->get() as $prod)
+        {
+            $test = $prod->price;
+        }
+        if($test>0)
+        {
+            $flag=1;
+        }
+        if($flag==1) {
+            return view('basket', compact('bask', 'sum'));
+        }
+        else
+        {
+            return view('noprod');
+        }
     }
 
 

@@ -1,60 +1,95 @@
 @extends('layouts.app')
 @section('content')
-
-    <div class="container" style="border: solid black">
+    <script>
+        var flag=1;
+    </script>
+    <div  class="container" style="border: solid black">
         <div class="border-bottom border-dark">
             <div class="row justify-content-md-center">
 
-    <table class="table table-sm">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Count</th>
-            <th scope="col">Price</th>
-            <th scope="col">Sum</th>
-            <th scope="col">Button</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($bask->products()->get() as $prod)
-        <tr id="objtodel{{$prod->id}}">
-            <th scope="row">{{$loop->index+1}}</th>
-            <td>{{$prod->title}}</td>
-            <td>{{$prod->pivot->number}}x</td>
-            <td>{{$prod->price}}</td>
-            <td>{{$prod->price*$prod->pivot->number}}</td>
-            <td>
-                <form method="post" id="delk"  style="width: 100%">
-                    <button  type="submit" class="btn btn-primary" >Remove</button>
-                    <input name="delka" value="{{$prod->id}}" hidden>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
-
+                <table class="table table-sm" style="margin-bottom: 0" >
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Count</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Sum</th>
+                        <th scope="col">Button</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($bask->products()->get() as $prod)
+                        <tr id="objtodel{{$prod->id}}">
+                            <th scope="row">{{$loop->index+1}}</th>
+                            <td>{{$prod->title}}</td>
+                            <td>{{$prod->pivot->number}}x</td>
+                            <td>{{$prod->price}}</td>
+                            <td >{{$prod->price*$prod->pivot->number}}</td>
+                            <input hidden id="min{{$prod->id}}" value="{{$prod->price*$prod->pivot->number}}">
+                            <input hidden value="{{$sum+=$prod->price*$prod->pivot->number}}">
+                            <td>
+                                <form method="delete" style="width: 100%">
+                                    <button  onclick="dot({{$prod->id}})"  type="button" class="btn btn-primary" >
+                                        <script>function dot(k)
+                                            {
+                                                var s =k;
+                                                $.ajax({
+                                                    type: 'delete',
+                                                    url: '{{route('delfrombasket')}}',
+                                                    data: {id:s},
+                                                    success: function (data) {
+                                                        var l = document.getElementById('min'+s);
+                                                        if(flag==1) {
+                                                            var sum = '{{$sum}}';
+                                                            flag=0;
+                                                        }
+                                                        var tot =document.getElementById('total');
+                                                        sum-=l.value;
+                                                        if(isNaN(sum) || sum==0)
+                                                        {
+                                                            tot.value = 0 +'rub';
+                                                            var dis = document.getElementById('dis');
+                                                            dis.setAttribute("disabled", "disabled");
+                                                        }
+                                                        else
+                                                        {
+                                                            tot.value=sum+' rub';
+                                                        }
+                                                        var o = document.getElementById('objtodel'+s);
+                                                        o.remove();
+                                                    },
+                                                });
+                                            }
+                                        </script>
+                                        Remove
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    <tr bgcolor="#00ffff">
+                        <th scope="row" bgcolor="#00ffff">Total</th>
+                        <td bgcolor="#00ffff"></td>
+                        <td bgcolor="#00ffff"></td>
+                        <td bgcolor="#00ffff"></td>
+                        <td bgcolor="#00ffff"></td>
+                        <td bgcolor="#00ffff">
+                            <form method="post" action="{{route('buying')}}" enctype="multipart/form-data">
+                                <input name="price" class="form-control" disabled type="text"value="{{$sum}} rub" id='total'style="width: 20%;text-align: center;float: left">
+                                <button id="dis" type="submit"class="btn btn-primary" style="width: 20%;float: left;margin-left: 1%">Buy</button>
+                                <input name="number" class="form-control" type="text" value="{{$sum}}" hidden>
+                                <input name="bask" class="form-control" type="text" value="{{$bask}}" hidden>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-    <script>
+        <div>
 
-        $(document).ready(function () {
-            $('#delk').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: '{{route('delfrombasket')}}',
-                    data: $('#delk').serialize(),
-                    success: function (data) {
-                        var o=document.getElementById('objtodel'+data);
-                        alert(a);
-                        //alert('objtodel'+data);
-                        //o.remove();
-                    },
-                });
-            });
-        });
-    </script>
+        </div>
+    </div>
+
 @endsection
