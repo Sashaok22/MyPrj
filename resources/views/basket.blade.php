@@ -75,7 +75,7 @@
                         <td bgcolor="#00ffff"></td>
                         <td bgcolor="#00ffff"></td>
                         <td bgcolor="#00ffff">
-                            <form method="post" action="{{route('buying')}}" enctype="multipart/form-data">
+                            <form method="post" action="{{route('sendmail')}}" enctype="multipart/form-data">
                                 <input name="price" class="form-control" disabled type="text"value="{{$sum}} rub" id='total'style="width: 20%;text-align: center;float: left">
                                 <button id="dis" type="submit"class="btn btn-primary" style="width: 20%;float: left;margin-left: 1%">Buy</button>
                                 <input name="number" class="form-control" type="text" value="{{$sum}}" hidden>

@@ -32,26 +32,4 @@ class UserproductController extends Controller
             BasketProduct::where('product_id',$request->id)->delete();
             return $request->id;
     }
-
-    public function buyall(Request $request)
-    {
-//        $sal = new Sale();
-//        $sal->user_id= Auth::id();
-//        $sal->price=$request->number;
-//        $sal->save();
-//        $id = Basket::find(Auth::id())->id;
-//        $bp = BasketProduct::where('basket_id',$id)->get();
-//        foreach ($bp as $b)
-//        {
-//            $b->delete();
-//        }
-        $bask = $request->bask;
-        $count = $request->number;
-        return redirect()->route('sendmail'[$bask],[$count]);
-    }
-
-
-
-
-
 }
