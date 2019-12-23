@@ -13,21 +13,22 @@ class MailSettings extends Controller
     {
 
         Mail::to(\App\User::find(Auth::id())->email)->send(new MailClass());
-        return view('message');
         MailSettings::buyall($request);
+        return view('message');
     }
 
     public function buyall(Request $request)
     {
-        $sal = new Sale();
-        $sal->user_id= Auth::id();
-        $sal->price=$request->number;
-        $sal->save();
-        $id = Basket::find(Auth::id())->id;
-        $bp = BasketProduct::where('basket_id',$id)->get();
-        foreach ($bp as $b)
-        {
-            $b->delete();
-        }
+//        $sal = new \App\Sale();
+//        $sal->user_id= Auth::id();
+//        $sal->price=$request->number;
+//        $sal->save();
+//        $id = \App\Basket::find(Auth::id())->id;
+//        $bp = \App\BasketProduct::where('basket_id',$id)->get();
+//        foreach ($bp as $b)
+//        {
+//            $b->delete();
+//        }
+
     }
 }

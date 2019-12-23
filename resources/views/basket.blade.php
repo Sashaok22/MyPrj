@@ -25,7 +25,7 @@
                             <td>{{$prod->title}}</td>
                             <td>{{$prod->pivot->number}}x</td>
                             <td>{{$prod->price}}</td>
-                            <td >{{$prod->price*$prod->pivot->number}}</td>
+                            <td>{{$prod->price*$prod->pivot->number}}</td>
                             <input hidden id="min{{$prod->id}}" value="{{$prod->price*$prod->pivot->number}}">
                             <input hidden value="{{$sum+=$prod->price*$prod->pivot->number}}">
                             <td>

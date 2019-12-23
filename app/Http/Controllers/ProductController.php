@@ -48,7 +48,7 @@ class ProductController extends Controller
 
     public function show($type,$id)
     {
-        $prod= true;
+        $prod=0;
         $product = Product::where('id', $id)->first();
         return view('prod', compact('product','prod'));
     }

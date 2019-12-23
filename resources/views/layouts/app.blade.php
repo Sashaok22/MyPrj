@@ -349,9 +349,10 @@
         /*    -webkit-transform: scale(1);*/
         /*    transform: scale(1);*/
         /*}*/
+
 </style>
 </head>
-<body >
+<body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

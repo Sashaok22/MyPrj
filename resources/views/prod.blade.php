@@ -1,6 +1,11 @@
 
 @extends('layouts.app')
 @section('content')
+    <div hidden>
+        @if(\App\BasketProduct::where('product_id',$product->id)->get()->first()):
+        {{$prod = true}};
+    @endif
+    </div>
     <div class="container" style="border: solid black">
         <div class="border-bottom border-dark">
             <div class="row justify-content-md-center">
@@ -12,14 +17,11 @@
                     Price: {{$product->price}}
                 </div>
             </div>
-
-
-            <div class="row">
+            <div class="row" onload="hide()">
                 Ingredients: @foreach($product->ingredients()->get() as $ing)
                     {{$ing->title}}
                 @endforeach
-            </div>
-
+            </div >
         </div>
         <div class="row">
             <div class="col-1">
@@ -30,7 +32,9 @@
                         Count
                         <p><input name="number" class="form-control" type="text" value="1"></p>
                         <input name="product_id" class="form-control" type="text" value="{{$product->id}}" hidden>
+                        <input id="flag" class="form-control" type="text" value="{{$prod}}" hidden>
                     </div>
+
                     <div id="msg" style="display: none" style="">
                         <strong>Product added</strong>
                     </div>
@@ -40,11 +44,6 @@
         </div>
     </div>
 <script>
-    If()
-    {
-        $('#norm').hide();
-        $('#msg').show();
-    }
     $(document).ready(function () {
         $('#save').on('submit', function (e) {
             e.preventDefault();
@@ -59,9 +58,12 @@
             });
         });
     });
-
-
-
+    l=document.getElementById('flag');
+    if(l.value==1)
+    {
+        $('#norm').hide();
+        $('#msg').show();
+    }
 
 </script>
 @endsection
