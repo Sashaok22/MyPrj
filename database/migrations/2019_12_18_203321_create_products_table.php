@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->text('title');
             $table->integer('weight');
             $table->integer('price');
+            $table->integer('discount');
+            $table->boolean('prday');
             $table->text('imgpath');
             $table->timestamps();
             $table->foreign('type_id')

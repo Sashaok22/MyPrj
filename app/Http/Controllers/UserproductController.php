@@ -19,12 +19,18 @@ class UserproductController extends Controller
 {
     public function buy(Request $request)
     {
-        $baskprod = new BasketProduct();
-        $baskprod->basket_id = Basket::find(Auth::id())->id;
-        $baskprod->product_id = $request->product_id;
-        $baskprod->number = $request->number;
-        $baskprod->save();
-        \response($request);
+        if(Auth::check()) {
+            $baskprod = new BasketProduct();
+            $baskprod->basket_id = Basket::find(Auth::id())->id;
+            $baskprod->product_id = $request->product_id;
+            $baskprod->number = $request->number;
+            $baskprod->save();
+            \response($request);
+        }
+        else
+        {
+            return redirect()->route('home');
+        }
     }
 
     public function delfrombask(Request $request)

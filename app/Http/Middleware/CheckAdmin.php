@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class ChekAdmin
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class ChekAdmin
     public function handle($request, Closure $next)
     {
         if(Auth::user()->role == 'user'){
-            return redirect()->route('home');
+            return redirect()->route('noadmin');
         }
         return $next($request);
     }

@@ -20,14 +20,14 @@
                     </thead>
                     <tbody>
                     @foreach($bask->products()->get() as $prod)
-                        <tr id="objtodel{{$prod->id}}">
+                        <tr id="objtodel{{$prod->id}}" style="background-color: grey;color: white">
                             <th scope="row">{{$loop->index+1}}</th>
                             <td>{{$prod->title}}</td>
                             <td>{{$prod->pivot->number}}x</td>
-                            <td>{{$prod->price}}</td>
-                            <td>{{$prod->price*$prod->pivot->number}}</td>
+                            <td>{{$prod->price*(1-$prod->discount/100)}}</td>
+                            <td>{{$prod->price*$prod->pivot->number*(1-$prod->discount/100)}}</td>
                             <input hidden id="min{{$prod->id}}" value="{{$prod->price*$prod->pivot->number}}">
-                            <input hidden value="{{$sum+=$prod->price*$prod->pivot->number}}">
+                            <input hidden value="{{$sum+=$prod->price*$prod->pivot->number*(1-$prod->discount/100)}}">
                             <td>
                                 <form method="delete" style="width: 100%">
                                     <button  onclick="dot({{$prod->id}})"  type="button" class="btn btn-primary" >
@@ -68,13 +68,13 @@
                             </td>
                         </tr>
                     @endforeach
-                    <tr bgcolor="#00ffff">
-                        <th scope="row" bgcolor="#00ffff">Total</th>
-                        <td bgcolor="#00ffff"></td>
-                        <td bgcolor="#00ffff"></td>
-                        <td bgcolor="#00ffff"></td>
-                        <td bgcolor="#00ffff"></td>
-                        <td bgcolor="#00ffff">
+                    <tr bgcolor=black>
+                        <th scope="row" bgcolor=black STYLE="color: white">Total</th>
+                        <td bgcolor=black></td>
+                        <td bgcolor=black></td>
+                        <td bgcolor=black></td>
+                        <td bgcolor=black></td>
+                        <td bgcolor=black>
                             <form method="post" action="{{route('sendmail')}}" enctype="multipart/form-data">
                                 <input name="price" class="form-control" disabled type="text"value="{{$sum}} rub" id='total'style="width: 20%;text-align: center;float: left">
                                 <button id="dis" type="submit"class="btn btn-primary" style="width: 20%;float: left;margin-left: 1%">Buy</button>

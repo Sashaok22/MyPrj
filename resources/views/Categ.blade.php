@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="wrapper">
     <div class="main_block">
 
@@ -8,13 +7,14 @@
 
             <div class="menu_list row">
                 @foreach($produc as $product)
-                <div class="item col-md-6" id="bx_1847241719_4">
+                <div class="item col-md-6" id="bx_1847241719_4" style="background-color: dodgerblue">
                     <div class="inner">
-                        <a title="{{$product->title}}" href="{{route('products',[$product])}}">
+                        <a style="color: black" title="{{$product->title}}" href="{{route('products',[$product])}}">
                             <div class="photo">
-                                <img alt="{{$product->title}}" src="/upload/iblock/1b7/1b7579e4f4a89849374228c3a63b4267.jpg">
+                                <img style="width: 50%;height: 200px" class="card-img-top" src="{{asset('/storage/'.$product->imgpath)}}" alt="Card image cap">
+                                <div style="float:right;" class="title"><h1 style="font-size: 20px;padding-top: 60px;padding-right: 70px">{{$product->title}}</h1></div>
                             </div>
-                            <div class="title">{{$product->title}}</div>
+
                         </a>
                     </div>
                 </div>
